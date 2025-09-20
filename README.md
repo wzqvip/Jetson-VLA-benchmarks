@@ -62,6 +62,8 @@ https://github.com/NVIDIA/Isaac-GR00T
 
 NVIDIA-Isaac-GR00T-N1.5-3B
 
+*This uses the **official** docker container. Auto restart added.*
+
 #### Container
 
 ```
@@ -76,16 +78,18 @@ sudo docker exec -it gr00t bash
 
 ```
 
+See the python files for details.
 
 
 ### OpenVLA
+
+*This use the jetson-containers for basic environments.*
 
 #### Container
 
 ```
 jetson-containers run -v /path/on/host:/path/in/container $(autotag openvla nano_llm)
 ```
-
 
 #### Run
 
@@ -96,6 +100,27 @@ pip install -U "transformers==4.40.1" "tokenizers==0.19.1"
 export HF_HOME=/data/hf
 export HUGGINGFACE_HUB_CACHE=/data/hf
 export TRANSFORMERS_CACHE=/data/hf
-export HF_TOKEN=hf_xxx  # 如果模型是 gated
+export HF_TOKEN=hf_xxx  # add your hugging face token here
+
+```
+
+
+
+###  LLAMA + MLC
+
+This use the jetson-containers for basic environments.
+
+
+#### Benchmark
+
+> To quantize and benchmark a model, run the [`benchmark.sh`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/mlc/benchmark.sh) script from the host (outside container)
+
+```
+HUGGINGFACE_TOKEN=your_token_here jetson-containers/packages/llm/mlc/benchmark.sh meta-llama/Llama-2-7b-hf
+```
+
+#### ~~Container~~
+
+```
 
 ```
