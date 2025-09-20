@@ -39,6 +39,12 @@ At the current stage, we focus on **Jetson AGX Orin** as the primary platform.
 - NVIDIA Jetson device (AGX Orin recommended, JetPack ≥ 6.2)
 - Docker with [jetson-containers](https://github.com/dusty-nv/jetson-containers)
 
+If https://pypi.jetson-ai-lab.dev timeout, try https://pypi.jetson-ai-lab.io
+
+```
+PIP_INDEX_URL=https://pypi.jetson-ai-lab.io/jp6/cu128
+```
+
 ### Quickstart
 
 Clone repo:
@@ -48,7 +54,6 @@ git clone https://github.com/wzqvip/Jetson-VLA-benchmarks.git
 cd Jetson-VLA-benchmarks
 ```
 
-
 ## Models
 
 ### ![ ](https://img.shields.io/badge/nVIDIA-%2376B900.svg?style=for-the-badge&logo=nVIDIA&logoColor=white) GR00T
@@ -56,3 +61,17 @@ cd Jetson-VLA-benchmarks
 https://github.com/NVIDIA/Isaac-GR00T
 
 NVIDIA-Isaac-GR00T-N1.5-3B
+
+
+OpenVLA
+
+```
+export PIP_INDEX_URL=https://pypi.org/simple
+pip install -U "transformers==4.40.1" "tokenizers==0.19.1"
+
+export HF_HOME=/data/hf
+export HUGGINGFACE_HUB_CACHE=/data/hf
+export TRANSFORMERS_CACHE=/data/hf
+export HF_TOKEN=hf_xxx  # 如果模型是 gated
+
+```
