@@ -62,8 +62,32 @@ https://github.com/NVIDIA/Isaac-GR00T
 
 NVIDIA-Isaac-GR00T-N1.5-3B
 
+#### Container
 
-OpenVLA
+```
+sudo docker run --runtime nvidia --network host --shm-size=8g \
+  --restart unless-stopped \
+  -e NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics \
+  -e HF_HOME=/data/hf -e HUGGINGFACE_HUB_CACHE=/data/hf -e TRANSFORMERS_CACHE=/data/hf \
+  -v $PWD:/workspace -v $PWD/data:/data -w /workspace \
+  --name gr00t -d isaac-gr00t:orin bash -lc 'tail -f /dev/null'
+
+sudo docker exec -it gr00t bash
+
+```
+
+
+
+### OpenVLA
+
+#### Container
+
+```
+jetson-containers run -v /path/on/host:/path/in/container $(autotag openvla nano_llm)
+```
+
+
+#### Run
 
 ```
 export PIP_INDEX_URL=https://pypi.org/simple
